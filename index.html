@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=bb9e427a-488c-4b09-9b3a-28c297c6980d
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segera Hadir!</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Menggunakan font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Efek gradien animasi pada latar belakang */
+        .animated-gradient {
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Styling untuk placeholder input */
+        input::placeholder {
+            color: #9ca3af;
+        }
+        /* Efek focus pada input */
+        .form-input:focus {
+            box-shadow: 0 0 0 2px #3b82f6; /* Warna biru saat focus */
+            outline: none;
+        }
+        /* Custom styling untuk digit timer */
+        .timer-digit {
+             min-width: 90px; /* Lebar minimum untuk konsistensi */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex justify-center min-h-screen p-4">
+    <!-- Kontainer Latar Belakang Gradien Animasi -->
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-slate-900 animated-gradient z-0"></div>
+    
+    <!-- Konten Utama -->
+    <main class="relative z-10 flex flex-col items-center text-center max-w-4xl w-full my-auto py-12">
+        
+        <!-- Logo Placeholder -->
+        <div class="mb-6">
+            <div class="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-blue-400"></div>
+        </div>
+        
+        <!-- Judul Utama -->
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-500 mb-4">
+            Sesuatu yang Hebat Akan Datang
+        </h1>
+        
+        <!-- Subjudul -->
+        <p class="max-w-2xl text-lg sm:text-xl text-gray-300 mb-10">
+            Kami sedang bekerja keras untuk meluncurkan platform baru kami. Masukkan email Anda di bawah ini untuk menjadi yang pertama tahu kapan kami tayang.
+        </p>
+
+        <!-- Penghitung Waktu Mundur -->
+        <div id="countdown-container" class="flex justify-center gap-2 sm:gap-4 md:gap-6 mb-12">
+            <div class="text-center bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg shadow-lg timer-digit">
+                <span id="days" class="text-4xl sm:text-5xl font-bold">00</span>
+                <span class="block text-sm text-gray-400 mt-1">Hari</span>
+            </div>
+            <div class="text-center bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg shadow-lg timer-digit">
+                <span id="hours" class="text-4xl sm:text-5xl font-bold">00</span>
+                <span class="block text-sm text-gray-400 mt-1">Jam</span>
+            </div>
+            <div class="text-center bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg shadow-lg timer-digit">
+                <span id="minutes" class="text-4xl sm:text-5xl font-bold">00</span>
+                <span class="block text-sm text-gray-400 mt-1">Menit</span>
+            </div>
+            <div class="text-center bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg shadow-lg timer-digit">
+                <span id="seconds" class="text-4xl sm:text-5xl font-bold">00</span>
+                <span class="block text-sm text-gray-400 mt-1">Detik</span>
+            </div>
+        </div>
+         <!-- Pesan setelah countdown selesai -->
+        <div id="launched-message" class="hidden text-center mb-12">
+            <h2 class="text-4xl font-bold text-green-400">Kami Telah Diluncurkan!</h2>
+            <p class="text-lg text-gray-300 mt-2">Terima kasih atas kesabaran Anda. Kunjungi situs baru kami sekarang!</p>
+        </div>
+
+
+        <form id="notify-form" class="w-full max-w-lg flex flex-col sm:flex-row gap-3 hidden">
+            <input 
+                type="email" 
+                id="email-input"
+                placeholder="Masukkan alamat email Anda..." 
+                class="w-full px-5 py-3 rounded-md bg-gray-800/70 border border-gray-700 text-white placeholder-gray-500 transition-all duration-300 form-input"
+                required
+            >
+            <button 
+                type="submit" 
+                class="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-md font-semibold text-white transition-transform duration-200 transform hover:scale-105 shadow-lg whitespace-nowrap"
+            >
+                Beri Tahu Saya
+            </button>
+        </form>
+        <p id="form-message" class="mt-4 text-green-400 h-6"></p>
+
+        <!-- Ikon Media Sosial -->
+        <footer class="mt-12">
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-white transition-transform duration-200 transform hover:scale-110"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition-transform duration-200 transform hover:scale-110"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition-transform duration-200 transform hover:scale-110"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition-transform duration-200 transform hover:scale-110"><i class="fab fa-github fa-lg"></i></a>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pengaturan untuk Evergreen Countdown Timer
+            const countdownDuration = 7 * 24 * 60 * 60 * 1000; // Durasi countdown: 7 hari
+
+            let countdownEndTime = localStorage.getItem('countdownEndTime');
+
+            // Jika tidak ada waktu akhir di localStorage, atur yang baru
+            if (!countdownEndTime) {
+                countdownEndTime = new Date().getTime() + countdownDuration;
+                localStorage.setItem('countdownEndTime', countdownEndTime);
+            }
+
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            const countdownContainer = document.getElementById('countdown-container');
+            const launchedMessage = document.getElementById('launched-message');
+
+            const timerInterval = setInterval(updateCountdown, 1000);
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = countdownEndTime - now;
+
+                if (distance < 0) {
+                    clearInterval(timerInterval);
+                    countdownContainer.classList.add('hidden');
+                    launchedMessage.classList.remove('hidden');
+                    localStorage.removeItem('countdownEndTime'); // Hapus agar bisa reset jika diperlukan
+                    return;
+                }
+
+                // Kalkulasi waktu
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Tampilkan hasil dengan format 2 digit
+                daysEl.textContent = String(days).padStart(2, '0');
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minutesEl.textContent = String(minutes).padStart(2, '0');
+                secondsEl.textContent = String(seconds).padStart(2, '0');
+            }
+            
+            updateCountdown(); // Panggil sekali di awal agar tidak ada jeda
+
+            // Penanganan Formulir Notifikasi
+            const notifyForm = document.getElementById('notify-form');
+            const emailInput = document.getElementById('email-input');
+            const formMessage = document.getElementById('form-message');
+
+            notifyForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = emailInput.value;
+
+                if (email && email.includes('@')) {
+                    formMessage.textContent = 'Terima kasih! Kami akan memberimu kabar.';
+                    formMessage.classList.remove('text-red-400');
+                    formMessage.classList.add('text-green-400');
+                    
+                    emailInput.value = ''; // Kosongkan input setelah berhasil
+
+                    // Sembunyikan pesan setelah 3 detik
+                    setTimeout(() => {
+                        formMessage.textContent = '';
+                    }, 3000);
+                } else {
+                    formMessage.textContent = 'Harap masukkan alamat email yang valid.';
+                    formMessage.classList.remove('text-green-400');
+                    formMessage.classList.add('text-red-400');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
